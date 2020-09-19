@@ -75,13 +75,13 @@ def create_container(username, container_name, container_info, working_directory
   # We append the user's name to the container name to avoid conflicts w/ other users.
   full_container_name = f'{username}_{container_name}'
   # Each container mounts its own directory inside of working_dir
-  container_dir = os.path.join(working_directory, container_name)
+  container_dir = f'{working_directory}/{container_name}'
 
   os.makedirs(container_dir)
   copy_tree(solution_directory, container_dir)
 
   mount = {
-    container_dir : {
+    f'C:{container_dir}' : {
       'bind' : container_dir,
       'mode' : 'rw'
     }
@@ -165,7 +165,7 @@ def create_network(username, network, working_directory, solution_directory):
                              container_dir, 
                              9000, 
                              10000,  
-                             os.path.join(container_dir, 'knownhosts.json'))
+                             f'{container_dir}/knownhosts.json')
 
     # Create network configuration files within the container.
     generate_knownhosts_txt(network, container_dir, 9000,  os.path.join(container_dir,'knownhosts_tcp.txt'))
@@ -177,7 +177,8 @@ def main():
   parser.add_argument('network_specification_file',  help="The path to your network specification json.", type=str)
   args = parser.parse_args()
 
-  working_directory = os.path.join(os.getcwd(), 'WORKING_DIRECTORY')
+  #working_directory = os.path.join(os.getcwd(), 'WORKING_DIRECTORY')
+  working_directory = "/network_generator_temp"
   client = docker.from_env()
   # Get the name of the user running the script to avoid name conflicts w/ other users on the system.
   username = getpass.getuser()

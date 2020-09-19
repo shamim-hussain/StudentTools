@@ -1,0 +1,17 @@
+{
+"solution_directory" : "C:/Users/Asus/OneDrive - Rensselaer Polytechnic Institute/Y2S1/DSA/StudentTools/network_generator/echo_server",
+"containers" : {
+    "alpha" : {
+    "image" : "submittyrpi/csci4510:default",
+    "ports" : 1
+    },
+    "beta" : {
+    "image" : "submittyrpi/csci4510:default",
+    "ports" : 1
+    },
+    "charlie" : {
+    "image" : "submittyrpi/csci4510:default",
+    "ports" : 1
+    }
+}
+}
