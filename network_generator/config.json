@@ -1,0 +1,17 @@
+{
+    "solution_directory" : "/mnt/c/Users/Asus/OneDrive - Rensselaer Polytechnic Institute/Y2S1/DSA/Project 1/Submission",
+    "containers" : {
+        "alpha" : {
+            "image" : "submittyrpi/csci4510:default",
+            "ports" : 1
+        },
+        "beta" : {
+            "image" : "submittyrpi/csci4510:default",
+            "ports" : 1
+        },
+        "charlie" : {
+            "image" : "submittyrpi/csci4510:default",
+            "ports" : 1
+        }
+    }
+}
